@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超准个性测试 | 发现真实的自己</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // Tailwind 配置 - iOS风格配色
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#60a5fa',
+                        secondary: '#8b5cf6',
+                        accent: '#f97316',
+                        blue: {
+                            400: '#93c5fd',
+                            500: '#60a5fa',
+                            600: '#3b82f6',
+                            700: '#2563eb',
+                        },
+                        purple: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                        },
+                        orange: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        },
+                        glass: {
+                            50: 'rgba(255, 255, 255, 0.05)',
+                            100: 'rgba(255, 255, 255, 0.1)',
+                            200: 'rgba(255, 255, 255, 0.15)',
+                            300: 'rgba(255, 255, 255, 0.2)',
+                            400: 'rgba(255, 255, 255, 0.25)',
+                            500: 'rgba(255, 255, 255, 0.3)',
+                        },
+                        dark: {
+                            900: '#0a0f1a',
+                            800: '#0f1624',
+                            700: '#151d2d',
+                            600: '#1c2536',
+                            500: '#243044',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+                        display: ['SF Pro Display', 'Inter', 'system-ui'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .gradient-text {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+            }
+            .card-hover {
+                @apply transition-all duration-500 hover:shadow-2xl hover:-translate-y-2;
+            }
+            .btn-gradient {
+            @apply bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white font-medium py-4 px-8 rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 active:scale-95;
+        }
+        }
+
+        /* iOS风格动画效果 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-2deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scale-in {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes text-shimmer {
+            0% { background-position: -100% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes glow-pulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(125, 211, 252, 0.5),
+                             0 0 40px rgba(125, 211, 252, 0.3),
+                             0 0 60px rgba(125, 211, 252, 0.2);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(56, 189, 248, 0.6),
+                             0 0 60px rgba(56, 189, 248, 0.4),
+                             0 0 90px rgba(56, 189, 248, 0.3);
+            }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-reverse { animation: float-reverse 7s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+        .animate-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient-shift 4s ease infinite;
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.6s ease-out forwards;
+        }
+        .animate-scale-in {
+            animation: scale-in 0.5s ease-out forwards;
+        }
+
+        /* iOS风格毛玻璃效果 - 增强版 */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        .glass-dark {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 2px 12px rgba(125, 211, 252, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* 抽象风景风格毛玻璃图标 */
+        .icon-glass {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.08) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            box-shadow: 
+                0 4px 24px rgba(96, 165, 250, 0.2),
+                0 1px 4px rgba(96, 165, 250, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .icon-glass:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 6px 32px rgba(96, 165, 250, 0.28),
+                0 2px 8px rgba(96, 165, 250, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        .icon-glass-accent {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0.08) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            box-shadow: 
+                0 4px 24px rgba(168, 85, 247, 0.2),
+                0 1px 4px rgba(168, 85, 247, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .icon-glass-accent:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 6px 32px rgba(168, 85, 247, 0.28),
+                0 2px 8px rgba(168, 85, 247, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        .icon-glass-success {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.2) 0%, rgba(74, 222, 128, 0.08) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(74, 222, 128, 0.35);
+            box-shadow: 
+                0 4px 24px rgba(74, 222, 128, 0.2),
+                0 1px 4px rgba(74, 222, 128, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .icon-glass-success:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 6px 32px rgba(74, 222, 128, 0.28),
+                0 2px 8px rgba(74, 222, 128, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        .icon-glass-warning {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.2) 0%, rgba(251, 146, 60, 0.08) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 146, 60, 0.35);
+            box-shadow: 
+                0 4px 24px rgba(251, 146, 60, 0.2),
+                0 1px 4px rgba(251, 146, 60, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .icon-glass-warning:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 6px 32px rgba(251, 146, 60, 0.28),
+                0 2px 8px rgba(251, 146, 60, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        /* 抽象风景光效 */
+        .glow-primary {
+            box-shadow: 0 0 40px rgba(96, 165, 250, 0.3), 0 0 80px rgba(96, 165, 250, 0.15);
+        }
+        .glow-accent {
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.3), 0 0 80px rgba(168, 85, 247, 0.15);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+        }
+
+        /* 抽象风景称号效果 */
+        .title-special {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            background: linear-gradient(
+                135deg,
+                #93c5fd 0%,
+                #60a5fa 20%,
+                #c084fc 40%,
+                #a855f7 55%,
+                #fb923c 75%,
+                #f97316 100%
+            );
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shimmer 5s linear infinite, glow-pulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(96, 165, 250, 0.4));
+        }
+        .title-special-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .title-special-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -30px;
+            background: radial-gradient(ellipse at center, rgba(96, 165, 250, 0.25), rgba(168, 85, 247, 0.15), transparent 70%);
+            filter: blur(25px);
+            z-index: -1;
+        }
+
+        /* 抽象风景风格背景 */
+        .gradient-bg {
+            background: 
+                url('/Users/xiaomumumu/Downloads/00ee26128e846c4fb57a14763a38a2c565ef31c316fdd-h3pX6d_fw1200-2.jpeg'),
+                linear-gradient(180deg, #0a0f1a 0%, #0f1624 40%, #151d2d 70%, #0a0f1a 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 15, 26, 0.75) 0%, rgba(15, 22, 36, 0.7) 50%, rgba(21, 29, 45, 0.85) 100%);
+            pointer-events: none;
+        }
+        .gradient-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 60% 70% at 50% 20%, rgba(96, 165, 250, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 50% at 25% 70%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 45% at 80% 60%, rgba(251, 146, 60, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            animation: ocean-pulse 8s ease-in-out infinite;
+        }
+        .gradient-hero {
+            background: 
+                radial-gradient(ellipse 65% 55% at 50% 25%, rgba(96, 165, 250, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 45% at 30% 75%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 45% 50% at 70% 70%, rgba(251, 146, 60, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(10, 15, 26, 0.9) 0%, rgba(15, 22, 36, 0.85) 50%, rgba(21, 29, 45, 0.9) 100%);
+            background-size: 400% 400%;
+            animation: ocean-shift 15s ease infinite;
+        }
+        @keyframes ocean-pulse {
+            0%, 100% { opacity: 0.65; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.01); }
+        }
+        @keyframes ocean-shift {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 50% 25%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 75%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        /* iOS风格装饰圆形 */
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+        .deco-circle-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(125, 211, 252, 0.45), transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+        .deco-circle-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.4), transparent 70%);
+            bottom: -150px;
+            left: -150px;
+        }
+        .deco-circle-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 70%);
+            top: 60%;
+            left: 5%;
+        }
+
+        /* 抽象风景选项卡片样式 - 3D倾斜效果 */
+        .option-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform-style: preserve-3d;
+        }
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.15), rgba(168, 85, 247, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .option-card:hover::before {
+            left: 100%;
+        }
+        .option-card:hover {
+            border-color: rgba(96, 165, 250, 0.4);
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.08) 0%, rgba(168, 85, 247, 0.03) 100%);
+            transform: translateX(8px) perspective(1000px) rotateY(-2deg);
+            box-shadow: 
+                0 8px 32px rgba(96, 165, 250, 0.18),
+                4px 0 20px rgba(96, 165, 250, 0.1);
+        }
+        .option-card.selected {
+            border-color: rgba(96, 165, 250, 0.5);
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.12) 0%, rgba(168, 85, 247, 0.05) 100%);
+            box-shadow: 
+                0 8px 32px rgba(96, 165, 250, 0.25),
+                0 0 0 1px rgba(96, 165, 250, 0.3);
+            transform: perspective(1000px) rotateY(-1deg);
+        }
+
+        /* 进度条增强 - iOS风格 */
+        .progress-bar-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            background: rgba(26, 18, 37, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .progress-bar-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            animation: shimmer 2.5s infinite;
+            pointer-events: none;
+        }
+
+        /* 导航栏增强 - iOS风格 */
+        .nav-glass {
+            background: linear-gradient(180deg, rgba(15, 10, 26, 0.92) 0%, rgba(15, 10, 26, 0.85) 100%);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(125, 211, 252, 0.12);
+            box-shadow: 
+                0 4px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        /* 按钮悬停光效 - 增强版 */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.5), rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+        .btn-glow:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-glow:hover::after {
+            opacity: 1;
+        }
+
+        /* 图标容器 */
+        .icon-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: inherit;
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: blur(12px);
+        }
+
+        /* 星星装饰 */
+        .star-decoration {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #a78bfa;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* 响应式增强 */
+        @media (max-width: 768px) {
+            .deco-circle { filter: blur(60px); opacity: 0.3; }
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #a78bfa, #e879f9);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #c084fc, #f0abfc);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen relative overflow-x-hidden">
+    <!-- 装饰性背景元素 -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="deco-circle deco-circle-1 animate-float"></div>
+        <div class="deco-circle deco-circle-2 animate-float-reverse"></div>
+        <div class="deco-circle deco-circle-3 animate-pulse-glow"></div>
+        
+        <!-- 星星装饰 -->
+        <div class="star-decoration" style="top: 15%; left: 20%; animation-delay: 0s;"></div>
+        <div class="star-decoration" style="top: 25%; right: 25%; animation-delay: 0.5s;"></div>
+        <div class="star-decoration" style="top: 60%; left: 15%; animation-delay: 1s;"></div>
+        <div class="star-decoration" style="top: 70%; right: 20%; animation-delay: 1.5s;"></div>
+        <div class="star-decoration" style="top: 40%; left: 8%; animation-delay: 0.8s;"></div>
+        <div class="star-decoration" style="top: 80%; left: 30%; animation-delay: 0.3s;"></div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="nav-glass sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="icon-glass rounded-xl p-2.5 text-primary group-hover:scale-110 transition-all duration-300">
+                    <i class="fa fa-star text-lg"></i>
+                </div>
+                <h1 class="text-xl font-bold gradient-text text-glow">个性测试馆</h1>
+            </div>
+            <button id="restartBtn" class="hidden text-gray-400 hover:text-primary transition-all duration-300 hover:scale-105 flex items-center gap-2 px-4 py-2 rounded-full hover:bg-primary/10">
+                <i class="fa fa-refresh"></i>重新测试
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 md:py-16 relative z-10">
+        <!-- 开始页面 -->
+        <section id="startPage" class="flex flex-col items-center justify-center min-h-[70vh] text-center">
+            <div class="max-w-3xl mx-auto">
+                <!-- 主图标区域 -->
+                <!-- 标题区域 -->
+                <div class="mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="max-w-lg mx-auto mb-6">
+                        <img src="/Users/xiaomumumu/Downloads/123.png" alt="个性测试标题" class="w-full h-auto scale-150 transform drop-shadow-[0_0_30px_rgba(255,255,255,0.5)] drop-shadow-[0_0_60px_rgba(147,197,253,0.3)]">
+                    </div>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-primary via-secondary to-accent mx-auto rounded-full mb-8 animate-shimmer"></div>
+                </div>
+
+                <!-- 描述文字 -->
+                <p class="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.4s;">
+                    只需回答几个简单的问题，我们将为你分析专属的个性特质，
+                    <br class="hidden md:inline">帮助你更好地了解自己、理解他人。
+                </p>
+
+                <!-- 开始按钮 -->
+                <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <button id="startTest" class="btn-gradient btn-glow text-xl group">
+                        开始测试
+                        <i class="fa fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+                    </button>
+                </div>
+
+                <!-- 特性标签 -->
+                <div class="flex flex-wrap justify-center gap-4 mt-16 animate-fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="glass-card px-5 py-3 rounded-full text-sm text-gray-400 flex items-center gap-2">
+                        <i class="fa fa-clock-o text-primary"></i>
+                        约3分钟
+                    </div>
+                    <div class="glass-card px-5 py-3 rounded-full text-sm text-gray-400 flex items-center gap-2">
+                        <i class="fa fa-user text-secondary"></i>
+                        10道精选题
+                    </div>
+                    <div class="glass-card px-5 py-3 rounded-full text-sm text-gray-400 flex items-center gap-2">
+                        <i class="fa fa-magic text-accent"></i>
+                        AI智能分析
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 测试页面 -->
+        <section id="testPage" class="hidden max-w-3xl mx-auto py-8">
+            <div class="glass-card rounded-3xl p-8 md:p-12 card-hover animate-scale-in">
+                <!-- 进度条 -->
+                <div class="mb-10">
+                    <div class="flex justify-between text-sm text-gray-400 mb-3 font-medium">
+                        <span class="flex items-center gap-2">
+                            <i class="fa fa-tasks text-primary"></i>
+                            测试进度
+                        </span>
+                        <span id="progressText" class="text-primary font-semibold">0/10</span>
+                    </div>
+                    <div class="progress-bar-container h-3 rounded-full overflow-hidden shadow-inner">
+                        <div id="progressBar" class="h-full bg-gradient-to-r from-primary via-secondary to-accent rounded-full transition-all duration-700 ease-out relative" style="width: 0%">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 题目区域 -->
+                <div class="mb-10">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="icon-glass rounded-xl p-3 text-primary flex-shrink-0">
+                            <i class="fa fa-question-circle text-xl"></i>
+                        </div>
+                        <h3 id="questionTitle" class="text-xl md:text-2xl font-semibold text-gray-200 leading-relaxed pt-1"></h3>
+                    </div>
+                    <div id="optionsContainer" class="space-y-4"></div>
+                </div>
+
+                <!-- 按钮 -->
+                <div class="flex justify-between items-center pt-4">
+                    <button id="prevBtn" class="hidden group px-5 py-2.5 border border-gray-700 rounded-full text-gray-400 hover:border-primary hover:text-primary transition-all duration-300 hover:bg-primary/10 flex items-center gap-2">
+                        <i class="fa fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                        上一题
+                    </button>
+                    <button id="nextBtn" class="btn-gradient btn-glow ml-auto group">
+                        下一题 
+                        <i class="fa fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结果页面 -->
+        <section id="resultPage" class="hidden max-w-3xl mx-auto py-8">
+            <div class="glass-card rounded-3xl p-8 md:p-12 card-hover animate-scale-in">
+                <!-- 结果头部 -->
+                <div class="text-center mb-10">
+                    <!-- 结果图标 -->
+                    <div class="relative inline-block mb-6">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-accent/40 rounded-full blur-2xl transform scale-125 animate-pulse-glow"></div>
+                        <div id="resultIcon" class="relative text-6xl mb-4 animate-float"></div>
+                    </div>
+                    
+                    <!-- 结果标题 - 特殊字体设计 -->
+                    <div class="title-special-wrapper mb-4">
+                        <h2 class="title-special text-3xl md:text-5xl" id="resultTitle"></h2>
+                    </div>
+                    
+                    <!-- 标签 -->
+                    <div class="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full">
+                        <i class="fa fa-tag text-primary"></i>
+                        <p class="text-gray-400 text-sm font-medium" id="resultTag"></p>
+                    </div>
+                    
+                    <!-- 分隔线 -->
+                    <div class="w-32 h-1 bg-gradient-to-r from-primary via-secondary to-accent mx-auto mt-8 rounded-full animate-shimmer"></div>
+                </div>
+
+                <!-- 结果内容 -->
+                <div class="space-y-8 mb-10">
+                    <!-- 个性解读 -->
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="icon-glass rounded-xl p-2.5 text-primary group-hover:scale-110 transition-transform">
+                                <i class="fa fa-lightbulb-o text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-200 text-lg">个性解读</h3>
+                        </div>
+                        <div class="ml-12 p-5 bg-dark-700/50 rounded-2xl border border-primary/20">
+                            <p id="resultDesc" class="text-gray-400 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <!-- 你的优势 -->
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="icon-glass-success rounded-xl p-2.5 text-green-400 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-check-circle text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-200 text-lg">你的优势</h3>
+                        </div>
+                        <div class="ml-12 space-y-3">
+                            <ul id="resultAdvantages" class="text-gray-400 space-y-3"></ul>
+                        </div>
+                    </div>
+
+                    <!-- 提升建议 -->
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="icon-glass-warning rounded-xl p-2.5 text-orange-400 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-exclamation-circle text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-200 text-lg">提升建议</h3>
+                        </div>
+                        <div class="ml-12 p-5 bg-dark-700/50 rounded-2xl border border-orange-500/20">
+                            <p id="resultSuggest" class="text-gray-400 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 重新测试按钮 -->
+                <div class="text-center pt-6 border-t border-gray-800">
+                    <button id="restartTest" class="btn-gradient btn-glow group">
+                        <i class="fa fa-refresh mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                        重新测试
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="glass mt-16 py-8 relative z-10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col items-center gap-3">
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fa fa-heart text-accent"></i>
+                    <span class="text-sm">感谢你的参与</span>
+                    <i class="fa fa-star text-primary"></i>
+                </div>
+                <p class="text-gray-600 text-sm">© 2025 个性测试馆 | 仅供娱乐参考</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 测试题目数据
+        const testQuestions = [
+            {
+                id: 1,
+                question: "在社交场合中，你通常会？",
+                options: [
+                    { text: "主动认识新朋友，享受热闹氛围", score: 10, icon: "fa-users" },
+                    { text: "和熟悉的人交流，不太主动接触陌生人", score: 5, icon: "fa-user-circle" },
+                    { text: "尽量低调，更喜欢独处观察周围", score: 1, icon: "fa-user" }
+                ]
+            },
+            {
+                id: 2,
+                question: "面对工作/学习任务，你更倾向于？",
+                options: [
+                    { text: "提前规划，按部就班完成", score: 1, icon: "fa-calendar-check-o" },
+                    { text: "有大致计划，灵活调整执行", score: 5, icon: "fa-puzzle-piece" },
+                    { text: "临时发挥，灵感往往在最后出现", score: 10, icon: "fa-lightbulb-o" }
+                ]
+            },
+            {
+                id: 3,
+                question: "当你做决定时，你更看重？",
+                options: [
+                    { text: "逻辑和事实，理性分析利弊", score: 1, icon: "fa-brain" },
+                    { text: "平衡理性与感受，综合考虑", score: 5, icon: "fa-balance-scale" },
+                    { text: "直觉和感受，跟随内心想法", score: 10, icon: "fa-heart" }
+                ]
+            },
+            {
+                id: 4,
+                question: "周末休息，你更想？",
+                options: [
+                    { text: "出门活动，聚会、逛街或旅行", score: 10, icon: "fa-plane" },
+                    { text: "和家人好友轻松相处", score: 5, icon: "fa-home" },
+                    { text: "宅家休息，享受独处时光", score: 1, icon: "fa-book" }
+                ]
+            },
+            {
+                id: 5,
+                question: "遇到问题时，你通常会？",
+                options: [
+                    { text: "立刻寻找解决方案，这里我更改了", score: 10, icon: "fa-wrench" },
+                    { text: "先冷静思考，再慢慢处理", score: 5, icon: "fa-coffee" },
+                    { text: "感到焦虑，需要时间调整心态", score: 1, icon: "fa-cloud" }
+                ]
+            },
+            {
+                id: 6,
+                question: "你更认同以下哪种观点？",
+                options: [
+                    { text: "人生需要不断挑战，突破自我", score: 10, icon: "fa-mountain" },
+                    { text: "平衡生活，稳定与成长兼顾", score: 5, icon: "fa-leaf" },
+                    { text: "平淡是福，享受简单的快乐", score: 1, icon: "fa-moon" }
+                ]
+            },
+            {
+                id: 7,
+                question: "在团队合作中，你更像？",
+                options: [
+                    { text: "领导者，组织大家推进任务", score: 10, icon: "fa-crown" },
+                    { text: "协调者，配合团队完成工作", score: 5, icon: "fa-handshake-o" },
+                    { text: "实干者，专注做好自己的部分", score: 1, icon: "fa-hammer" }
+                ]
+            },
+            {
+                id: 8,
+                question: "对于新事物，你的态度是？",
+                options: [
+                    { text: "乐于尝试，充满好奇心", score: 10, icon: "fa-compass" },
+                    { text: "观察了解后，再决定是否尝试", score: 5, icon: "fa-search" },
+                    { text: "习惯熟悉的事物，不太愿意改变", score: 1, icon: "fa-lock" }
+                ]
+            },
+            {
+                id: 9,
+                question: "别人对你的评价更可能是？",
+                options: [
+                    { text: "开朗热情，充满活力", score: 10, icon: "fa-sun-o" },
+                    { text: "温和友善，善解人意", score: 5, icon: "fa-smile-o" },
+                    { text: "沉稳内敛，独立思考", score: 1, icon: "fa-mask" }
+                ]
+            },
+            {
+                id: 10,
+                question: "面对压力，你会？",
+                options: [
+                    { text: "找人倾诉，释放情绪", score: 10, icon: "fa-comments" },
+                    { text: "自我调节，慢慢消化", score: 5, icon: "fa-spa" },
+                    { text: "专注做事，用行动缓解压力", score: 1, icon: "fa-tasks" }
+                ]
+            }
+        ];
+
+        // 测试结果数据
+        const resultTypes = [
+            {
+                minScore: 10,
+                maxScore: 30,
+                type: "静谧沉思者",
+                icon: "fa-moon text-indigo-400",
+                tag: "内敛、理性、独立、深度思考者",
+                desc: "你是一个内心丰富、善于思考的人。比起热闹的社交场合，你更享受独处的时光。你拥有敏锐的洞察力和深刻的内心世界，不随波逐流，有自己独特的价值观和生活方式。",
+                advantages: ["专注力强，能深度投入事情", "逻辑清晰，理性客观", "内心强大，独立不依赖他人", "观察力敏锐，善于发现细节"],
+                suggest: "可以适当打开自己，与他人分享内心想法；偶尔尝试新的环境，突破舒适区会让你收获更多惊喜。"
+            },
+            {
+                minScore: 31,
+                maxScore: 60,
+                type: "温和平衡家",
+                icon: "fa-leaf text-emerald-400",
+                tag: "温和、友善、平衡、包容力强",
+                desc: "你是一个性格温和、善于平衡的人。你能很好地适应不同环境，与人相处融洽，懂得换位思考。你追求稳定和谐的生活，是身边人值得信赖的伙伴。",
+                advantages: ["情商高，擅长人际关系处理", "心态平和，抗压能力强", "包容大度，不轻易计较", "适应力强，能融入各种环境"],
+                suggest: "保持你的温柔特质，同时在必要时坚持自己的立场；勇敢表达真实需求，不要过度迁就他人。"
+            },
+            {
+                minScore: 61,
+                maxScore: 100,
+                type: "阳光开拓者",
+                icon: "fa-sun text-amber-400",
+                tag: "热情、勇敢、积极、行动力满分",
+                desc: "你是一个充满活力、敢于挑战的人。你拥有极强的行动力和感染力，天生自带光芒，喜欢探索未知、尝试新鲜事物，对生活充满热情和期待。",
+                advantages: ["积极乐观，充满正能量", "行动力强，想到就去做", "领导力突出，善于带动他人", "勇于挑战，不畏惧失败"],
+                suggest: "适当放慢脚步，享受过程而非只追求结果；多倾听他人意见，耐心会让你的优势发挥得更好。"
+            }
+        ];
+
+        // 页面交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const startPage = document.getElementById('startPage');
+            const testPage = document.getElementById('testPage');
+            const resultPage = document.getElementById('resultPage');
+            const startTest = document.getElementById('startTest');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const restartTest = document.getElementById('restartTest');
+            const restartBtn = document.getElementById('restartBtn');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const questionTitle = document.getElementById('questionTitle');
+            const optionsContainer = document.getElementById('optionsContainer');
+            
+            // 测试状态
+            let currentQuestion = 0;
+            let totalScore = 0;
+            let selectedScore = null;
+
+            // 初始化测试
+            function initTest() {
+                currentQuestion = 0;
+                totalScore = 0;
+                selectedScore = null;
+                showPage('test');
+                renderQuestion();
+            }
+
+            // 显示对应页面
+            function showPage(page) {
+                startPage.classList.add('hidden');
+                testPage.classList.add('hidden');
+                resultPage.classList.add('hidden');
+                restartBtn.classList.add('hidden');
+                
+                if (page === 'start') {
+                    startPage.classList.remove('hidden');
+                } else if (page === 'test') {
+                    testPage.classList.remove('hidden');
+                    restartBtn.classList.remove('hidden');
+                } else if (page === 'result') {
+                    resultPage.classList.remove('hidden');
+                    restartBtn.classList.remove('hidden');
+                }
+            }
+
+            // 渲染题目
+            function renderQuestion() {
+                const question = testQuestions[currentQuestion];
+                selectedScore = null;
+                
+                // 更新题目
+                questionTitle.textContent = `${currentQuestion + 1}. ${question.question}`;
+                
+                // 更新选项
+                optionsContainer.innerHTML = '';
+                question.options.forEach((option, index) => {
+                    const optionEl = document.createElement('div');
+                    optionEl.className = 'option-card p-5 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-lg';
+                    optionEl.innerHTML = `
+                        <div class="flex items-center">
+                            <div class="w-7 h-7 rounded-full border-2 border-gray-600 flex items-center justify-center mr-4 option-radio flex-shrink-0 transition-all">
+                                <div class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-primary to-secondary hidden option-dot transform scale-0 transition-transform duration-200"></div>
+                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0 option-icon">
+                                <i class="fa ${option.icon} text-primary text-sm"></i>
+                            </div>
+                            <span class="text-gray-300 leading-relaxed">${option.text}</span>
+                        </div>
+                    `;
+                    
+                    // 选择选项
+                    optionEl.addEventListener('click', () => {
+                        selectedScore = option.score;
+                        // 更新选中样式
+                        document.querySelectorAll('#optionsContainer > div').forEach(el => {
+                            el.classList.remove('selected');
+                            el.querySelector('.option-radio').classList.remove('border-primary', 'border-secondary');
+                            el.querySelector('.option-radio').classList.add('border-gray-600');
+                            el.querySelector('.option-dot').classList.add('hidden');
+                            el.querySelector('.option-dot').classList.remove('scale-100');
+                            el.querySelector('.option-dot').classList.add('scale-0');
+                            el.querySelector('.option-icon').classList.remove('bg-primary/30');
+                            el.querySelector('.option-icon').classList.add('bg-primary/10');
+                        });
+                        optionEl.classList.add('selected');
+                        optionEl.querySelector('.option-radio').classList.remove('border-gray-600');
+                        optionEl.querySelector('.option-radio').classList.add('border-primary');
+                        optionEl.querySelector('.option-dot').classList.remove('hidden');
+                        optionEl.querySelector('.option-dot').classList.remove('scale-0');
+                        optionEl.querySelector('.option-dot').classList.add('scale-100');
+                        optionEl.querySelector('.option-icon').classList.remove('bg-primary/10');
+                        optionEl.querySelector('.option-icon').classList.add('bg-primary/30');
+                    });
+                    
+                    optionsContainer.appendChild(optionEl);
+                });
+                
+                // 更新进度
+                const progress = ((currentQuestion + 1) / testQuestions.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${currentQuestion + 1}/${testQuestions.length}`;
+                
+                // 按钮状态
+                prevBtn.classList.toggle('hidden', currentQuestion === 0);
+                nextBtn.innerHTML = currentQuestion === testQuestions.length - 1 
+                    ? '查看结果 <i class="fa fa-check ml-2"></i>' 
+                    : '下一题 <i class="fa fa-arrow-right ml-2"></i>';
+            }
+
+            // 计算结果
+            function calculateResult() {
+                const result = resultTypes.find(type => totalScore >= type.minScore && totalScore <= type.maxScore);
+                return result || resultTypes[1];
+            }
+
+            // 显示结果
+            function showResult() {
+                const result = calculateResult();
+                document.getElementById('resultIcon').innerHTML = `<i class="fa ${result.icon}"></i>`;
+                document.getElementById('resultTitle').textContent = result.type;
+                document.getElementById('resultTag').textContent = result.tag;
+                document.getElementById('resultDesc').textContent = result.desc;
+                
+                // 渲染优势列表
+                const advantagesEl = document.getElementById('resultAdvantages');
+                advantagesEl.innerHTML = '';
+                result.advantages.forEach((adv, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-start gap-3 p-3 bg-dark-700/30 rounded-lg border border-gray-700/50 hover:border-green-500/30 hover:shadow-md transition-all duration-300';
+                    li.innerHTML = `
+                        <div class="w-6 h-6 rounded-full icon-glass-success flex items-center justify-center text-green-400 text-xs flex-shrink-0 mt-0.5">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <span class="text-gray-400">${adv}</span>
+                    `;
+                    li.style.animationDelay = `${index * 0.1}s`;
+                    li.classList.add('animate-fade-in-up');
+                    advantagesEl.appendChild(li);
+                });
+                
+                document.getElementById('resultSuggest').textContent = result.suggest;
+                showPage('result');
+            }
+
+            // 事件监听
+            startTest.addEventListener('click', initTest);
+            
+            nextBtn.addEventListener('click', () => {
+                if (selectedScore === null) {
+                    alert('请选择一个选项');
+                    return;
+                }
+                
+                totalScore += selectedScore;
+                
+                if (currentQuestion < testQuestions.length - 1) {
+                    currentQuestion++;
+                    renderQuestion();
+                } else {
+                    showResult();
+                }
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentQuestion > 0) {
+                    totalScore -= testQuestions[currentQuestion - 1].options.find(o => o.score === selectedScore)?.score || 0;
+                    currentQuestion--;
+                    renderQuestion();
+                }
+            });
+            
+            restartTest.addEventListener('click', () => showPage('start'));
+            restartBtn.addEventListener('click', () => showPage('start'));
+        });
+    </script>
+</body>
+</html>
